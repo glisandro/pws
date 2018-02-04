@@ -1,12 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
-        <meta charset="UTF-8">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('build/css/app.css') }}">
+            <link rel="stylesheet" href="{{ asset('build/css/creative.css') }}">
+        {% endblock %}
     </head>
-    <body>
+    <body id="page-top">
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        {% block javascripts %}
+        	<script src="{{ asset('build/manifest.js') }}"></script>
+        	<script src="{{ asset('build/js/common.js') }}"></script>
+        	<script src="{{ asset('build/js/app.js') }}"></script>
+        {% endblock %}
     </body>
 </html>
