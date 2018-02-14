@@ -5,9 +5,10 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\CheatSheetsRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\ResourceRepository")
+ * @ORM\Table(name="resources")
  */
-class CheatSheets
+class Resource
 {
     /**
      * @ORM\Id
@@ -22,14 +23,24 @@ class CheatSheets
     private $text;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      */
     private $url;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      */
     Private $description;
+
+    /**
+     * @ORM\Column(type="string",columnDefinition="enum('fontawesome', 'cheatsheet','other')")
+     */
+    Private $type;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    Private $code;
 
     /**
      * @return mixed
@@ -95,5 +106,35 @@ class CheatSheets
         $this->description = $description;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
 
+    /**
+     * @param mixed $type
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCode()
+    {
+        return $this->code;
+    }
+
+    /**
+     * @param mixed $code
+     */
+    public function setCode($code)
+    {
+        $this->code = $code;
+    }
 }

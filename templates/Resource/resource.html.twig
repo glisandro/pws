@@ -1,0 +1,109 @@
+{% set referer = url('resources') %}
+
+{% extends 'base.html.twig' %}
+
+{% block body  %}
+
+    <header>
+        <div class="navbar navbar-dark bg-dark box-shadow">
+            <div class="container d-flex justify-content-between">
+                <a href="#" class="navbar-brand d-flex align-items-center">
+                    <i class="fa fa-keyboard"></i> <span>PHPWithSymfony</span>
+                </a>
+            </div>
+        </div>
+    </header>
+    <main role="main">
+        <div class="jumbotron">
+            <div class="container">
+                <h1 class="display-3">Recursos</h1>
+                <p>
+                    <a href="/admin/?action=new&entity=Resource&sortField=id&sortDirection=DESC&referer={{ referer }}" class="btn btn-success btn-lg ">Add</a>
+                </p>
+            </div>
+
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="card">
+                        <div class="card-header">Cheat Sheets</div>
+                        <div class="card-body">
+                            <ul class="list-group">
+                                {% for resource in cheatsheets  %}
+                                    <li class="list-group-item"><a href="{{ resource.url }}">{{ resource.text }}</a>
+                                        <a href="/admin/?action=edit&entity=Resource&sortField=id&sortDirection=DESC&id={{ resource.id }}&referer={{ referer }}" class="btn btn-outline-primary btn-sm">Edit</a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card">
+                        <div class="card-header">Font Awasome</div>
+                        <div class="card-body">
+                            <ul class="list-group">
+                                {% for resource in fontawesome  %}
+                                    <p>
+                                        {{ resource.code|raw }}
+                                        <code>{{ resource.text }}</code>
+                                        <a href="/admin/?action=edit&entity=Resource&sortField=id&sortDirection=DESC&id={{ resource.id }}&referer={{ referer }}" class="btn btn-outline-primary btn-sm ">Edit</a>
+                                    </p>
+                                {% endfor %}
+                                <i class="fal fa-address-book"></i>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card">
+                        <div class="card-header">Other</div>
+                        <div class="card-body">
+                            <ul class="list-group">
+                                {% for resource in others  %}
+                                    <li class="list-group-item"><a href="{{ resource.url }}">{{ resource.text }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="container py-5">
+        <div class="row">
+            <div class="col-12 col-md">
+                <i class="fa fa-code"></i>
+                <small class="d-block mb-3 text-muted">© 2017-2018</small>
+            </div>
+            <div class="col-6 col-md">
+                <h5>Title</h5>
+                <ul class="list-unstyled text-small">
+                    <li><a class="text-muted" href="#">Link</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-md">
+                <h5>Title</h5>
+                <ul class="list-unstyled text-small">
+                    <li><a class="text-muted" href="#">Link</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-md">
+                <h5>Title</h5>
+                <ul class="list-unstyled text-small">
+                    <li><a class="text-muted" href="#">Link</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-md">
+                <h5>Title</h5>
+                <ul class="list-unstyled text-small">
+                    <li><a class="text-muted" href="#">Link</a></li>
+                </ul>
+            </div>
+        </div>
+        
+    </footer>
+
+{% endblock %}

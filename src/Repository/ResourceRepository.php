@@ -2,27 +2,27 @@
 
 namespace App\Repository;
 
-use App\Entity\CheatSheets;
+use App\Entity\Resource;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
-class CheatSheetsRepository extends ServiceEntityRepository
+class ResourceRepository extends ServiceEntityRepository
 {
     public function __construct(RegistryInterface $registry)
     {
-        parent::__construct($registry, CheatSheets::class);
+        parent::__construct($registry, Resource::class);
     }
 
-    /*
-    public function findBySomething($value)
+
+    public function findByType($value)
     {
         return $this->createQueryBuilder('c')
-            ->where('c.something = :value')->setParameter('value', $value)
+            ->where('c.type = :value')->setParameter('value', $value)
             ->orderBy('c.id', 'ASC')
-            ->setMaxResults(10)
+            //->setMaxResults(10)
             ->getQuery()
             ->getResult()
         ;
     }
-    */
+
 }
